@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ChapterDTO } from '../models/getChapterDTO';
 import { GetMangaDTO } from '../models/getMangaDTO';
 
 @Injectable({
@@ -22,7 +23,7 @@ export class DataSourceService {
   }
   getMangaByTitle = async (title: string): Promise<GetMangaDTO | undefined> => {
     try {
-      const uri = `${environment.apiUrl}/v1/manga/${title}.toPromise()`
+      const uri = `${environment.apiUrl}/v1/manga/${title}`
       const response = await this.http.get<GetMangaDTO>(uri).toPromise();
       return response || undefined;
     } catch (error) {
@@ -30,10 +31,12 @@ export class DataSourceService {
       return undefined;
     }
   }
-  getMangaChapters = async (titleId: string): Promise<object | undefined> => {
+  getMangaChapters = async (titleId: string): Promise<ChapterDTO | undefined> => {
     try {
-      const uri = `${environment.apiUrl}/v1/manga/chapters/${titleId}.toPromise()`
-      const response = await this.http.get<object>(uri);
+      const uri = `${environment.apiUrl}/v1/manga/chapters/${titleId}`
+      console.log(`new request for: ${uri}`);
+
+      const response = await this.http.get<ChapterDTO>(uri).toPromise();
       return response || undefined;
     } catch (error) {
       console.log('There is an error in GET request');

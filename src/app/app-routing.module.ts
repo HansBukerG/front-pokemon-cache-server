@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChapterListComponent } from './manga/components/chapter-list/chapter-list.component';
 import { ListComponent } from './manga/components/list/list.component';
 
 const routes: Routes = [
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'mangaList',
     component: ListComponent
+  },
+  {
+    path: 'manga/chapter/List/:id',
+    component: ChapterListComponent
   },
 ];
 

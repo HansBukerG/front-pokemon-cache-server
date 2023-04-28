@@ -1,0 +1,13 @@
+<div class="row mb-2">
+    <h3>Listado de Capítulos:</h3>
+</div>
+<div class="row">
+  <div class="col-xs-1-12" *ngFor="let chapter of chapterList">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Capítulo: {{chapter.attributes.chapter}}</h3>
+        <p class="card-text">{{chapter.attributes.volume}}</p>
+      </div>
+    </div>
+  </div>
+</div>

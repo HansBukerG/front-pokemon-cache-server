@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { FilterComponent } from './digimon/components/filter/filter.component';
 import { ListComponent } from './manga/components/list/list.component';
 import { StartMenuComponent } from './start-menu/start-menu.component';
+import { ChapterListComponent } from './manga/components/chapter-list/chapter-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilterComponent,
     ListComponent,
-    StartMenuComponent
+    StartMenuComponent,
+    ChapterListComponent
   ],
   imports: [
     BrowserModule,
