@@ -1,0 +1,20 @@
+<div class="row mb-2">
+    <div class="form-group">
+      <label for=""></label>
+      <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+    </div>
+</div>
+<div class="row" >
+  <div class="col-sm-3 p-2" *ngFor="let manga of mangaList">
+    <div class="card">
+      <div class="row">
+        <img [src]="manga.coverArtFileName" alt="Cover Art">
+      </div>
+      <div class="row">
+        <div class="card-body">
+          <h4 class="card-title">{{ manga.attributes.title.en }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
