@@ -9,6 +9,7 @@ import { FilterComponent } from './digimon/components/filter/filter.component';
 import { ListComponent } from './manga/components/list/list.component';
 import { StartMenuComponent } from './start-menu/start-menu.component';
 import { ChapterListComponent } from './manga/components/chapter-list/chapter-list.component';
+import {ChapterImagesComponent} from './manga/components/chapter-images/chapter-images.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ChapterListComponent } from './manga/components/chapter-list/chapter-li
     FilterComponent,
     ListComponent,
     StartMenuComponent,
-    ChapterListComponent
+    ChapterListComponent,
+    ChapterImagesComponent
   ],
   imports: [
     BrowserModule,

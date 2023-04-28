@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ChapterImages } from '../models/ChapterImagesDTO';
 import { ChapterDTO } from '../models/getChapterDTO';
 import { GetMangaDTO } from '../models/getMangaDTO';
 
@@ -43,10 +44,10 @@ export class DataSourceService {
       return undefined;
     }
   }
-  getChapterImages = async (chapterId: string): Promise<object | undefined> => {
+  getChapterImages = async (chapterId: string): Promise<ChapterImages | undefined> => {
     try {
       const uri = `${environment.apiUrl}/v1/chapter/images/${chapterId}`
-      const response = await this.http.get<object>(uri).toPromise();
+      const response = await this.http.get<ChapterImages>(uri).toPromise();
       return response || undefined;
     } catch (error) {
       console.log('There is an error in GET request');

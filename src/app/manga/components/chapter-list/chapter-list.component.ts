@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataSourceService } from '../../datasource/data-source.service';
 import { Chapter } from '../../models/Chapter';
+import { sortChapters } from '../../utils/utils';
 
 @Component({
   selector: 'app-chapter-list',
@@ -14,6 +15,7 @@ export class ChapterListComponent implements OnInit{
   constructor(
     private apiService: DataSourceService,
     private activatedRoute: ActivatedRoute,
+    private router:Router,
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class ChapterListComponent implements OnInit{
         console.log(this.activatedRoute.snapshot.params['id']);
         const response = await this.apiService.getMangaChapters(this.activatedRoute.snapshot.params['id']);
         if (response) {
-          this.chapterList = response.data;
+          this.chapterList = sortChapters(response.data);
         }
         console.log(this.chapterList);
       } catch (error) {
@@ -31,4 +33,7 @@ export class ChapterListComponent implements OnInit{
     })();
   }
 
+  goToChapterView(chapterId:string):void{
+    this.router.navigate(['manga/chapter/images/', chapterId]);
+  }
 }
