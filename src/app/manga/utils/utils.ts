@@ -1,6 +1,6 @@
 import { environment } from "src/environments/environment";
 import { Chapter } from "../models/Chapter";
-import { Manga } from "../models/Manga";
+import { Manga, Tag } from "../models/Manga";
 
 export const setMangaCoverArt = (mangaList: Manga[]): Manga[] => {
 
@@ -19,6 +19,27 @@ export const setMangaCoverArt = (mangaList: Manga[]): Manga[] => {
         }
     })
     return newMangaList;
+}
+
+export const setMangaCoverArtById = (manga: Manga): Manga => {
+    const coverArtRelationship = manga.relationships.find(
+        (relationship) => relationship.type === 'cover_art'
+    );
+
+    if (coverArtRelationship) {
+        const coverArtFileName = `${environment.MANGA_COVERS}/covers/${manga.id}/${coverArtRelationship.attributes?.fileName}`;
+        const mangaWithCoverArtFileName = {
+            ...manga,
+            coverArtFileName,
+        };
+        return mangaWithCoverArtFileName;
+    } else {
+        return manga;
+    }
+};
+
+export const getTags = (manga:Manga): Tag[] => {
+  return manga.attributes.tags;
 }
 
 export const sortChapters = (chapterList: Chapter[]): Chapter[] => {

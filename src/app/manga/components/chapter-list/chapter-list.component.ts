@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataSourceService } from '../../datasource/data-source.service';
-import { Chapter } from '../../models/Chapter';
-import { sortChapters } from '../../utils/utils';
+import { Chapter, TranslatedLanguage } from '../../models/Chapter';
+import { Manga, Tag } from '../../models/Manga';
+import { getTags, setMangaCoverArtById, sortChapters } from '../../utils/utils';
 
 @Component({
   selector: 'app-chapter-list',
@@ -11,6 +12,9 @@ import { sortChapters } from '../../utils/utils';
 })
 export class ChapterListComponent implements OnInit{
   public chapterList:Chapter[] = [];
+  public mangaId:string = '';
+  public manga:Manga | null = null;
+  public tags:Tag[] | null = null;
 
   constructor(
     private apiService: DataSourceService,
@@ -21,19 +25,23 @@ export class ChapterListComponent implements OnInit{
   ngOnInit(): void {
     (async()=>{
       try {
-        console.log(this.activatedRoute.snapshot.params['id']);
-        const response = await this.apiService.getMangaChapters(this.activatedRoute.snapshot.params['id']);
+        this.mangaId = this.activatedRoute.snapshot.params['id'];
+        const [responseManga, response] = await Promise.all([this.apiService.getMangaById(this.mangaId), this.apiService.getMangaChapters(this.mangaId)]);
+        if (responseManga) {
+          this.manga = setMangaCoverArtById(responseManga.data);
+          this.tags = getTags(this.manga);
+        }
         if (response) {
           this.chapterList = sortChapters(response.data);
         }
-        console.log(this.chapterList);
       } catch (error) {
         console.error('Error fetching chapter list', error);
       }
+
     })();
   }
 
-  goToChapterView(chapterId:string):void{
-    this.router.navigate(['manga/chapter/images/', chapterId]);
+  goToChapterView(chapterId:string,translatedLanguage:string):void{
+    this.router.navigate(['manga/chapter/images/', this.mangaId, chapterId, translatedLanguage]);
   }
 }

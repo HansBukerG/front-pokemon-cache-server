@@ -19,7 +19,7 @@ const routes: Routes = [
     component: ChapterListComponent
   },
   {
-    path: 'manga/chapter/images/:id',
+    path: 'manga/chapter/images/:mangaId/:chapterid/:translatedLanguage',
     component: ChapterImagesComponent
   },
 ];

@@ -1,3 +1,35 @@
-<div class="row" *ngFor="let view of chapterView">
-    <img [src]="view" alt="Cover Art">
+<div class="row mb-2 font-general">
+    <p>Estas leyendo: {{currentManga?.attributes?.title?.en}}</p>
+    <p>{{currentChapter?.attributes?.title}}</p>
+    <p>Capítulo: {{currentChapter?.attributes?.chapter}}</p>
+</div>
+
+<div class="row justify-content-center mb-2">
+    <div class="col-sm-auto">
+        <a class="btn btn-chapter font-general" role="button" (click)="goToPreviousChapter()">Capítulo Anterior</a>
+    </div>
+    <div class="col-sm-auto">
+      <a class="btn btn-chapter font-general" role="button" (click)="goToChapters()">Listado de Capítulos</a>
+    </div>
+    <div class="col-sm-auto">
+        <a class="btn btn-chapter font-general" role="button" (click)="goToNextChapter()">Capítulo Siguiente</a>
+    </div>
+</div>
+
+<div class="row mb-2">
+    <div class="row" *ngFor="let view of chapterView">
+        <img [src]="view" alt="Cover Art">
+    </div>
+</div>
+
+<div class="row justify-content-center mb-2">
+    <div class="col-sm-auto">
+        <a class="btn btn-chapter font-general" role="button" (click)="goToPreviousChapter()">Capítulo Anterior</a>
+    </div>
+    <div class="col-sm-auto">
+      <a class="btn btn-chapter font-general" role="button" (click)="goToChapters()">Listado de Capítulos</a>
+    </div>
+    <div class="col-sm-auto">
+        <a class="btn btn-chapter font-general" role="button" (click)="goToNextChapter()">Capítulo Siguiente</a>
+    </div>
 </div>

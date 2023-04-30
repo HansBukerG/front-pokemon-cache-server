@@ -1,0 +1,22 @@
+.btn-search{
+    color:beige;
+    background-color: #0f1d6d;
+}
+
+.cover-art-style{
+    height: 250px;
+}
+
+.card-style{
+
+    background-color: #0f1d6d;
+}
+.card-style:hover{
+    background-color: #118ab2;
+}
+
+.card-text-style{
+    color:beige;
+    height: 45px;
+    overflow: hidden;
+}

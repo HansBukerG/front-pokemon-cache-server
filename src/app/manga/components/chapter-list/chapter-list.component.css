@@ -1,0 +1,14 @@
+.font-general{
+    color: beige;
+    overflow: hidden;
+}
+
+.chapter-bar{
+    background-color: #0f1d6d;
+    height:fit-content;
+}
+
+.chapter-bar:hover{
+    background-color: #118ab2;
+}
+

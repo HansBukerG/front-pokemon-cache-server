@@ -1,0 +1,12 @@
+.font-general{
+    color: beige;
+}
+
+.btn-chapter{
+    background-color: #0f1d6d;
+    
+}
+
+.btn-chapter:hover{
+    background-color: #118ab2;
+}
