@@ -10,6 +10,7 @@ import { ListComponent } from './manga/components/list/list.component';
 import { StartMenuComponent } from './start-menu/start-menu.component';
 import { ChapterListComponent } from './manga/components/chapter-list/chapter-list.component';
 import {ChapterImagesComponent} from './manga/components/chapter-images/chapter-images.component';
+import { UrlTesterComponent } from './url-tester/url-tester.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ChapterImagesComponent} from './manga/components/chapter-images/chapter-
     ListComponent,
     StartMenuComponent,
     ChapterListComponent,
-    ChapterImagesComponent
+    ChapterImagesComponent,
+    UrlTesterComponent
   ],
   imports: [
     BrowserModule,

@@ -17,4 +17,8 @@ export class StartMenuComponent {
   pokemonFrontPage() { }
   digimonFrontPage() { }
 
+  urlTestPage() {
+    this.router.navigate(['urlTest'])
+  }
+
 }
